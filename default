@@ -97,57 +97,118 @@
 #             This part is plugin  dependant
 
 
-
+#
+# Plugin {
+#     type = wincmd
+#     config {
+#         image = ~/.fbpanel/images/Desktop2.png
+#         tooltip = Left click to iconify all windows. Middle click to shade them.
+#     }
+# }
 
 
 Global {
-    edge = top
+    edge = bottom
     allign = center
-    margin = 200
+    margin = 0
     widthtype = percent
     width = 86
-    height = 30
+    height = 24
     transparent = true
     tintcolor = #ffffff
     alpha = 28
-    setdocktype = false
+    setdocktype = true
     setpartialstrut = true
     autohide = false
     heightWhenHidden = 2
-    roundcorners = false
+    roundcorners = true
     roundcornersradius = 7
     layer = none
     MaxElemHeight = 32
 }
 
 
-Plugin {
-    type = wincmd
-    config {
-        icon = show-desktop
-        tooltip = Left click to iconify all windows. Middle click to shade them.
-    }
-}
 
 Plugin {
     type = space
     config {
-        size = 20
+        size = 2
     }
 }
+
+
+Plugin {
+    type = menu
+    config {
+        IconSize = 22
+        #icon = start-here
+        icon = logo
+        systemmenu {
+        }
+        separator {
+        }
+	menu {  
+	    name = Computer
+	    icon = computer
+            
+	    item {
+		name = Terminal
+		icon = terminal
+		action = x-terminal
+	    }
+            item {
+                name = Lock Display
+                icon = gnome-lockscreen
+                action = slock
+            }
+            separator {
+            }
+            item {
+                name = Reboot
+                icon = gnome-session-reboot
+                action = sudo reboot
+            }
+            item {
+                name = Shutdown
+                icon = gnome-session-halt
+                action = sudo shutdown -h now
+            }
+            item {
+                name = logout
+                icon = gnome-session-logout
+                action = /usr/libexec/fbpanel/xlogout
+            }
+        }
+    }
+}
+
+
+
+Plugin {
+    type = space
+    config {
+        size = 15
+    }
+}
+
 
 Plugin {
     type = launchbar
     config {
         button {
-            icon = todo
-            tooltip = To Do
-            action = leafpad /home/maxi/Dokumente/ToDo
+            icon = file-manager
+            tooltip = File Manager
+            action = x-file-manager
+        }
+        button {
+            icon = terminal
+            tooltip = Terminal
+            action = x-terminal
         }
 	button {
-            icon = aleph
-            tooltip = Hebräisch
-            action = leafpad /home/maxi/Dokumente/Hebräisch
+            icon = web-browser
+            tooltip = Web Browser
+            action = x-www-browser
     	}
     }
 }
@@ -155,20 +216,132 @@ Plugin {
 Plugin {
     type = space
     config {
-        size = 673
+        size = 15
+    }
+}
+
+
+Plugin {
+    type = wincmd
+    config {
+        icon = gnome-fs-desktop
+        tooltip = Left click to iconify all windows. Middle click to shade them.
+    }
+}
+
+
+Plugin {
+    type = space
+    config {
+        size = 15
+    }
+}
+
+
+
+Plugin {
+    type = taskbar
+    expand = true
+    config {
+        ShowIconified = true
+        ShowMapped    = true
+        ShowAllDesks  = false
+        tooltips = true
+        IconsOnly = false
+        MaxTaskWidth = 150
+    }
+}
+
+
+Plugin {
+    type = space
+	config {
+	   size = 15
+	}
+}
+
+Plugin {
+    type = pager
+    config {
+        showwallpaper = true
+    }
+}
+
+Plugin {
+    type = space
+    config {
+        size = 10
+    }
+}
+
+Plugin {
+    type = mem
+    expand = false
+    padding = 2
+    config {
+        ShowSwap = false
+    }
+}
+
+Plugin {
+    type = cpu
+    config {
+        Color = green
+    }
+}
+
+Plugin {
+    type = net
+    expand = false
+    padding = 0
+    config {
+        #interface = ppp0
+        interface = eth0
+        # set connection limits to make traffic graph more accurate
+        TxLimit = 20
+        RxLimit = 190
+        TxColor = violet
+        RxColor = blue
+    }
+}
+
+
+Plugin {
+    type = space
+    config {
+        size = 10
+    }
+}
+
+plugin {
+    type = volume
+}
+
+#plugin {
+#    type = battery
+#}
+
+Plugin {
+    type = tray
+}
+
+Plugin {
+    type = space
+    config {
+        size = 10
     }
 }
 
 # Digital Clock
-#Plugin {
-#    type = dclock
-#    config {
-#        ShowSeconds = false
-#        HoursView = 24
-#        TooltipFmt = %A %x
-#        #Action = xmessage Please define some command &
-#    }
-#}
+Plugin {
+    type = dclock
+    config {
+        ShowSeconds = false
+        HoursView = 24
+        TooltipFmt = %A %x
+        #Action = xmessage Please define some command &
+    }
+}
 
 # Text Clock
 # ClockFmt: (string) Clock format string.  May contain strftime conversion
@@ -178,88 +351,49 @@ Plugin {
 # ShowCalendar: (boolean) Show a GTK calendar widget when the clock is
 #               clicked.  Only valid if Action is unset.
 # ShowTooltip: (boolean) Show tooltip for clock.
-
-Plugin {
-    type = launchbar
-    config {
-        button {
-            icon = clock
-            tooltip = Kalender anzeigen
-            action = calendar
-        }
-    }
-}
-
-Plugin {
-    type = tclock
-    config {
-        ClockFmt = <span color="#f2f2f2" font="Inconsolata 18"><b>%I:%M</b></span>
-        # 2 line view, time in bold above and date below
-        #ClockFmt = <span font="Sans 10"><b>%-l:%M</b> %P&#xA;%a %B %-e</span>
-        TooltipFmt = %A, %x
-        #Action = xmessage Please define some command &
-        ShowCalendar = true
-        ShowTooltip = true
-    }
-}
+#Plugin {
+#    type = tclock
+#    config {
+#        ClockFmt = <b>%I:%M</b>
+#        # 2 line view, time in bold above and date below
+#        # ClockFmt = <span font="Sans 8"><b>%-l:%M</b> %P&#xA;%a %B %-e</span>
+#        TooltipFmt = %A %x
+#        #Action = xmessage Please define some command &
+#        ShowCalendar = false
+#        ShowTooltip = true
+#    }
+#}
 
 # 'icons' plugin lets you customize window icons.
 # these changes apply to entire desktop
-
-
-
 Plugin {
-    type = space
+    type = icons
     config {
-        size = 694
+        DefaultIcon = %%datadir%%/fbpanel/images/default.xpm
+        application {
+            icon = gnome-terminal
+            ClassName = XTerm
+        }
+        application {
+            icon = gnome-terminal
+            ClassName = mlterm
+        }
+        application {
+            icon = gnome-terminal
+            ClassName = URxvt
+        }
+        application {
+            icon = gnome-emacs
+            ClassName = Emacs
+        }
+        application {
+            icon = mozilla-firefox
+            ClassName = Firefox-bin
+        }
+        application {
+            icon = mozilla-firefox
+            ClassName = Firefox
+        }
     }
 }
-
-plugin {
-    type = battery
-
-	icon = gnome-session-halt
-
-}
-
-Plugin {
-    type = space
-    config {
-        size = 20
-    }
-}
-
-
-Plugin {
-    type = menu
-    config {
-        IconSize = 22
-        icon = gnome-session-halt
-        icon = logo
-
-            item {
-                name = Bildschirm sperren
-                icon = gnome-lockscreen
-                action = slock
-            }
-            item {
-                name = Abmelden
-                icon = gnome-session-logout
-                action = /usr/libexec/fbpanel/xlogout
-            }
-	item {
-                name = Neu starten
-                icon = gnome-session-reboot
-                action = sudo reboot
-            }
-            item {
-                name = Herunterfahren
-                icon = gnome-session-halt
-                action = sudo shutdown -h now
-            }
-
-    }
-}
-
-
 
