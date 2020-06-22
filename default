@@ -125,7 +125,7 @@ Plugin {
     type = wincmd
     config {
         icon = show-desktop
-        tooltip = Links klicken, um alle Fenster zu schließen. Mittelklick, um sie einzurollen.
+        tooltip = Linksklicken, um alle Fenster zu schließen. Mittelklick, um sie einzurollen.
     }
 }
 
@@ -183,7 +183,7 @@ Plugin {
     type = launchbar
     config {
         button {
-            icon = clock
+            icon = uhr
             tooltip = Zeit ist ein Konstrukt
             action = feh /home/maxi/Bilder/Time/memory.jpg
         }
@@ -211,15 +211,28 @@ Plugin {
 Plugin {
     type = space
     config {
-        size = 694
+        size = 664
     }
 }
+
 
 plugin {
     type = battery
 
 	icon = gnome-session-halt
 
+}
+
+
+Plugin {
+    type = launchbar
+    config {
+        button {
+            icon = sku
+            tooltip = Memento Mori
+            action = feh /home/maxi/Bilder/Mori/mori.png
+        }
+    }
 }
 
 Plugin {
@@ -234,9 +247,9 @@ Plugin {
     type = menu
     config {
         IconSize = 22
-        icon = gnome-session-halt
+        icon = runterfahren
         icon = logo
-
+	tooltip = Abschalten
             item {
                 name = Bildschirm sperren
                 icon = lock
