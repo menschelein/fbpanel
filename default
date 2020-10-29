@@ -109,7 +109,7 @@ Global {
     height = 30
     transparent = true
     tintcolor = black
-    alpha = 110
+    alpha = 500
     setdocktype = false
     setpartialstrut = true
     autohide = false
@@ -125,7 +125,7 @@ Plugin {
     type = wincmd
     config {
         icon = show-desktop
-        tooltip = Linksklicken, um alle Fenster zu schließen. Mittelklick, um sie einzurollen.
+        tooltip = <span color="#f2f2f2" font="scientifica 14">Linksklicken, um alle Fenster zu schließen. Mittelklick, um sie einzurollen. </span>
     }
 }
 
@@ -136,26 +136,12 @@ Plugin {
     }
 }
 
-Plugin {
-    type = launchbar
-    config {
-        button {
-            icon = todo
-            tooltip = To Do
-            action = leafpad /home/maxi/Dokumente/ToDo
-        }
-	button {
-            icon = aleph
-            tooltip = Hebräisch
-            action = leafpad /home/maxi/Dokumente/Hebräisch
-    	}
-    }
-}
+
 
 Plugin {
     type = space
     config {
-        size = 673
+        size = 727
     }
 }
 
@@ -184,7 +170,7 @@ Plugin {
     config {
         button {
             icon = uhr
-            tooltip = Zeit ist ein Konstrukt
+            tooltip = <span color="#f2f2f2" font="scientifica 14">Zeit ist ein Konstrukt</span>
             action = feh /home/maxi/Bilder/Time/memory.jpg
         }
     }
@@ -193,10 +179,10 @@ Plugin {
 Plugin {
     type = tclock
     config {
-        ClockFmt = <span color="#f2f2f2" font="Inconsolata 18"><b>%H:%M</b></span>
+        ClockFmt = <span color="#f2f2f2" font="scientifica 22"><b>%H:%M</b></span>
         # 2 line view, time in bold above and date below
         #ClockFmt = <span font="Sans 10">%H:%M </span>
-        TooltipFmt = %A, %x
+        TooltipFmt = <span color="#f2f2f2" font="scientifica 14"> %A, %d. %B %Y</span>
         #Action = xmessage Please define some command &
         ShowCalendar = true
         ShowTooltip = true
@@ -211,7 +197,7 @@ Plugin {
 Plugin {
     type = space
     config {
-        size = 664
+        size = 695
     }
 }
 
@@ -224,16 +210,7 @@ plugin {
 }
 
 
-Plugin {
-    type = launchbar
-    config {
-        button {
-            icon = sku
-            tooltip = Memento Mori
-            action = feh /home/maxi/Bilder/Mori/mori.png
-        }
-    }
-}
+
 
 Plugin {
     type = space
@@ -260,10 +237,18 @@ Plugin {
                 icon = logout
                 action = /usr/libexec/fbpanel/xlogout
             }
-
+	    item {
+	         name = Neustarten
+		 icon = rebootfb
+		 action = doas reboot
+	    }
+	    item {
+	         name = Herunterfahren
+		 icon = downfb
+		 action = doas shutdown -h now
+	    }
 
     }
 }
-
 
 
